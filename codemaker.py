@@ -2,6 +2,8 @@ import array as arr
 import random
 import time
 
+LENGTH_OF_CODE = 4
+
 
 class CodeMaker:
     """
@@ -19,7 +21,7 @@ class CodeMaker:
         available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
 
         random.seed(time.time_ns())
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             val = random.choice(available_choices)
             self.code.append(val)
             available_choices.remove(val)
@@ -33,7 +35,7 @@ class CodeMaker:
         """
         feedback = arr.array('i', [-1, -1, -1, -1])
 
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             if self.code[i] == move[i]:
                 feedback[i] = 1
             elif self.code.count(move[i]) == 1:

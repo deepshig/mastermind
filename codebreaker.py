@@ -1,6 +1,7 @@
 import array as arr
 import random as rand
 import time
+from codemaker import LENGTH_OF_CODE
 
 
 class CodeBreaker:
@@ -16,7 +17,7 @@ class CodeBreaker:
         available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
 
         rand.seed(time.time_ns())
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             val = rand.choice(available_choices)
             self.move.append(val)
             available_choices.remove(val)
@@ -39,7 +40,7 @@ class CodeBreaker:
 
     def __handle_perfectly_correct_elements(self, new_move, feedback):
         """ Elements for which feedback is 1, maintain them across moves"""
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 1:
                 new_move[i] = self.move[i]
 
@@ -57,7 +58,7 @@ class CodeBreaker:
         empty_indices = arr.array('i')
         values_to_handle = arr.array('i')
 
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 0:
                 values_to_handle.append(self.move[i])
             if new_move[i] == 0:
@@ -70,7 +71,7 @@ class CodeBreaker:
                 random_index = rand.choice(empty_indices)
                 new_move[random_index] = val
 
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 0:
                 if self.move[i] == new_move[i]:
                     empty_indices.remove(i)
@@ -89,7 +90,7 @@ class CodeBreaker:
         is not allowed
         """
         values_to_substitute = arr.array('i')
-        for i in range(0, 4):
+        for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == -1:
                 values_to_substitute.append(self.move[i])
 
@@ -98,7 +99,7 @@ class CodeBreaker:
 
 
 def substitute_values(move, values_to_substitute):
-    for i in range(0, 4):
+    for i in range(0, LENGTH_OF_CODE):
         if move[i] == 0:
             new_val = rand.randint(1, 6)
 
