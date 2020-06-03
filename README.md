@@ -4,15 +4,15 @@ Mastermind is a code-breaking game for two players. The modern game with pegs wa
 
 ## Dependencies
 
- * [Python 3.7.7](https://www.python.org/downloads/release/python-377/)
- * [Pytest 5.4.2](https://pypi.org/project/pytest/)
+* [Python 3.7.7](https://www.python.org/downloads/release/python-377/)
+* [Pytest 5.4.2](https://pypi.org/project/pytest/)
 
- ## Assumptions
+## Assumptions
 
- * A code is built up of 4 colors
- * Code breaker gets a total of 5 chances to guess the code
- * Repetition of colors in the code is not allowed
- * For every move of code breaker, code maker provides feeback as an array of 4 elements, as follows :
-    * If element value = 1 : It means the color and position both are correctly guessed for the element at this position.
-    * If element value = 0 : It means an element of this color is present somewhere in the code, but not at this position.
-    * If element value = -1 : It means there is no element of this color in the code.
+* A code is built up of 4 colors
+* Code breaker gets a total of 5 chances to guess the code
+* Repetition of colors in the code is not allowed
+* For every move of code breaker, code maker provides feeback as an array of 4 elements, as follows :
+   * If element value = 1 : It means the color and position both are correctly guessed for the element at this position.
+   * If element value = 0 : It means an element of this color is present somewhere in the code, but not at this position.
+   * If element value = -1 : It means there is no element of this color in the code.
