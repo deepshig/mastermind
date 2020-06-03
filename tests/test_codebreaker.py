@@ -14,6 +14,7 @@ def codebreaker_player():
 def test_get_first_move(codebreaker_player):
     available_elements = arr.array('i', [1, 2, 3, 4, 5, 6])
     first_move = codebreaker_player.get_first_move()
+
     assert len(first_move) == 4
     for i in range(0, 4):
         assert available_elements.count(first_move[i]) != 0

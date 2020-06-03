@@ -1,4 +1,6 @@
 import array as arr
+import random
+import time
 
 
 class CodeMaker:
@@ -13,7 +15,14 @@ class CodeMaker:
 
     # TODO : generate the code randomly
     def __generate_code(self):
-        self.code = arr.array('i', [1, 2, 3, 4])
+        self.code = arr.array('i')
+        available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
+
+        random.seed(time.time_ns())
+        for i in range(0, 4):
+            val = random.choice(available_choices)
+            self.code.append(val)
+            available_choices.remove(val)
 
     def analyze_move(self, move):
         """

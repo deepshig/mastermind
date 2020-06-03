@@ -12,11 +12,18 @@ def codemaker_player():
 
 
 def test_code_generation(codemaker_player):
-    expected_code = arr.array('i', [1, 2, 3, 4])
-    assert codemaker_player.code == expected_code
+    available_elements = arr.array('i', [1, 2, 3, 4, 5, 6])
+    code = codemaker_player.code
+
+    assert len(code) == 4
+    for i in range(0, 4):
+        assert available_elements.count(code[i]) != 0
+        assert code.count(code[i]) == 1
 
 
 def test_analyze_move(codemaker_player):
+    codemaker_player.code = arr.array('i', [1, 2, 3, 4])
+
     # when the color and positions of all elements match
     all_matching_move = arr.array('i', [1, 2, 3, 4])
     expected_feedback = arr.array('i', [1, 1, 1, 1])
