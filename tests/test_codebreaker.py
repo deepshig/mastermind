@@ -12,6 +12,11 @@ def codebreaker_player():
 
 
 def test_get_first_move(codebreaker_player):
+    """
+    1. Test if the length of move is correct
+    2. Test if all the elements of the move belong to the given set
+    3. Test if all the elements appear only once within the move
+    """
     available_elements = arr.array('i', [1, 2, 3, 4, 5, 6])
     first_move = codebreaker_player.get_first_move()
 
