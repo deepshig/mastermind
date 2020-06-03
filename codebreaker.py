@@ -11,9 +11,16 @@ class CodeBreaker:
     and maintains its own knowledge to generate the next move.
     """
 
-    # TODO : generate the first move randomly
     def get_first_move(self):
-        self.move = arr.array('i', [4, 6, 2, 1])
+        self.move = arr.array('i')
+        available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
+
+        rand.seed(time.time_ns())
+        for i in range(0, 4):
+            val = rand.choice(available_choices)
+            self.move.append(val)
+            available_choices.remove(val)
+
         return self.move
 
     def get_next_move(self, feedback):
