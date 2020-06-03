@@ -54,8 +54,13 @@ def codebreaker_won(feedback):
     return True
 
 
-game = Game()
-print_code(game.codemaker.code)
+def main():
+    game = Game()
+    print_code(game.codemaker.code)
 
-game.play()
-print_winner(game.winner)
+    game.play()
+    print_winner(game.winner)
+
+
+if __name__ == "__main__":
+    main()
