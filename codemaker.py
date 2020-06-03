@@ -15,7 +15,6 @@ class CodeMaker:
     def __init__(self):
         self.__generate_code()
 
-    # TODO : generate the code randomly
     def __generate_code(self):
         self.code = arr.array('i')
         available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
