@@ -9,7 +9,7 @@ class CodeMaker:
     """
 
     def __init__(self):
-        __generate_code(self)
+        self.__generate_code()
 
     def __generate_code(self):
         self.code = arr.array('i', [1, 2, 3, 4])
