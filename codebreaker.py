@@ -67,9 +67,11 @@ class CodeBreaker:
         if len(values_to_handle) != 0 and len(empty_indices) != 0:
             rand.seed(time.time_ns())
 
+            available_indices = empty_indices.tolist()
             for val in values_to_handle:
-                random_index = rand.choice(empty_indices)
+                random_index = rand.choice(available_indices)
                 new_move[random_index] = val
+                available_indices.remove(random_index)
 
         for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 0:
