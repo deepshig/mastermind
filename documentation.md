@@ -49,7 +49,7 @@ Here :
 * World within a square boundary is the real world.
 * There exists a reflexive relation for both the agents at every world.
 * There are other relations and other worlds possible as well, but we have skipped them to maintain the simplicity of the diagram.
-* K2 are the knowledge relations for agent 2.
+* R2 are the knowledge relations for agent 2.
 
 Here, colors are the propositional variables. In each world, the possible code decides which propositions are true. For example, for the real world :
 
