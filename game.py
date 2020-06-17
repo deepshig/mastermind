@@ -1,5 +1,6 @@
 from codemaker import CodeMaker
 from codebreaker import CodeBreaker
+from knowledge_manager import KnowledgeManager
 from printer import print_game_state, print_code, print_winner
 
 NUMBER_OF_CHANCES = 5
@@ -21,6 +22,9 @@ class Game:
         self.codemaker = CodeMaker()
         self.codebreaker = CodeBreaker()
 
+        self.knowledge_manager = KnowledgeManager()
+        self.knowledge_manager.get_real_world(self.codemaker.code)
+
     def play(self):
         feedback = self.__handle_first_move()
         if codebreaker_won(feedback):
@@ -30,7 +34,8 @@ class Game:
         for i in range(2, NUMBER_OF_CHANCES+1):
             next_move = self.codebreaker.get_next_move(feedback)
             feedback = self.codemaker.analyze_move(next_move)
-            print_game_state(i, next_move, feedback)
+            self.__update_knwoledge(next_move, feedback)
+            print_game_state(i, next_move, feedback, self.knowledge_manager)
 
             if codebreaker_won(feedback):
                 self.winner = CODE_BREAKER
@@ -42,8 +47,15 @@ class Game:
     def __handle_first_move(self):
         first_move = self.codebreaker.get_first_move()
         feedback = self.codemaker.analyze_move(first_move)
-        print_game_state(1, first_move, feedback)
+
+        self.__update_knwoledge(first_move, feedback)
+        print_game_state(1, first_move, feedback, self.knowledge_manager)
+
         return feedback
+
+    def __update_knwoledge(self, move, feedback):
+        self.knowledge_manager.handle_move(move, feedback)
+        return
 
 
 def codebreaker_won(feedback):
@@ -56,7 +68,7 @@ def codebreaker_won(feedback):
 
 def main():
     game = Game()
-    print_code(game.codemaker.code)
+    print_code(game.codemaker.code, game.knowledge_manager)
 
     game.play()
     print_winner(game.winner)
