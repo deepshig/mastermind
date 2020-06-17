@@ -1,10 +1,9 @@
 from itertools import combinations
+import copy
 
 
 def __add_permutation(a, collection):
-    permutation = []
-    for i in a:
-        permutation.append(i)
+    permutation = copy.deepcopy(a)
 
     collection.append(permutation)
     return collection
