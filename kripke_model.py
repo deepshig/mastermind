@@ -3,7 +3,7 @@ from permutations import generate_all_combinations, generate_all_permutations
 from codemaker import LENGTH_OF_CODE
 
 
-numbers_to_colors = {
+__numbers_to_colors = {
     1: "yellow",
     2: "violet",
     3: "red",
@@ -38,8 +38,7 @@ def get_relations(worlds):
 def get_corresponding_world(order_of_colors, world_iterator):
     assignment = {}
     for i in range(0, LENGTH_OF_CODE):
-        color = numbers_to_colors[order_of_colors[i]]
-        key = str(i+1) + ":" + color
+        key = get_world_key(i+1, order_of_colors[i])
         assignment[key] = True
 
     world_name = "w" + str(world_iterator)
@@ -66,3 +65,8 @@ def generate_worlds():
             world_iterator = world_iterator + 1
 
     return worlds
+
+
+def get_world_key(index, color_number):
+    key = str(index) + ":" + __numbers_to_colors[color_number]
+    return key
