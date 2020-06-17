@@ -26,3 +26,21 @@ def test_get_real_world(knowledge_manager):
     knowledge_manager.get_real_world(input_code)
     assert knowledge_manager.real_world.assignment == expected_world_assignment
     assert knowledge_manager.real_world.name == "w13"
+
+
+def test_handle_move(knowledge_manager):
+    """ when feedback contains all 1s
+    that is, all the elements are perfectly guessed
+    """
+    input_move = [2, 3, 5, 6]
+    input_feedback = [1, 1, 1, 1]
+    expected_number_of_worlds = 1
+    expected_number_of_relations_agent1 = 1
+    expected_number_of_relations_agent2 = 1
+
+    knowledge_manager.handle_move(input_move, input_feedback)
+    assert len(knowledge_manager.model.worlds) == expected_number_of_worlds
+    assert len(
+        knowledge_manager.model.relations['1']) == expected_number_of_relations_agent1
+    assert len(
+        knowledge_manager.model.relations['2']) == expected_number_of_relations_agent2

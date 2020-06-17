@@ -66,10 +66,3 @@ def generate_worlds():
             world_iterator = world_iterator + 1
 
     return worlds
-
-
-worlds = generate_worlds()
-relations = get_relations(worlds)
-
-ks = KripkeStructure(worlds, relations)
-print(ks)
