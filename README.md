@@ -8,6 +8,8 @@ This project is an analysis in terms of multi agent systems. It identifies the c
 
 * [Python 3.7.7](https://www.python.org/downloads/release/python-377/)
 * [Pytest 5.4.2](https://pypi.org/project/pytest/)
+* [import_from_github](https://github.com/nvbn/import_from_github_com)
+* [ML Solver](https://github.com/erohkohl/mlsolver)
 
 ## Assumptions
 
