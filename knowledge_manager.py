@@ -28,15 +28,26 @@ class KnowledgeManager:
     def handle_move(self, move, feedback):
         for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 1:
-                valid_assignment = str(i+1) + ":" + numbers_to_colors[move[i]]
-                self.__handle_perfectly_correct_element(valid_assignment)
+                assignment = str(i+1) + ":" + numbers_to_colors[move[i]]
+                self.__handle_perfectly_correct_element(assignment)
+
+            if feedback[i] == -1:
+                self.__handle_incorrect_elements(numbers_to_colors[move[i]])
         return
 
-    def __handle_perfectly_correct_element(self, valid_assignment):
+    def __handle_perfectly_correct_element(self, assignment):
         worlds = copy.deepcopy(self.model.worlds)
         for w in worlds:
-            if not (valid_assignment in w.assignment):
+            if not (assignment in w.assignment):
                 self.model.remove_node_by_name(w.name)
+
+    def __handle_incorrect_elements(self, color):
+        worlds = copy.deepcopy(self.model.worlds)
+        for w in worlds:
+            for i in range(1, 5):
+                assignment = str(i) + ":" + color
+                if assignment in w.assignment:
+                    self.model.remove_node_by_name(w.name)
 
 
 def get_assignment(code):
@@ -47,3 +58,9 @@ def get_assignment(code):
         assignment[key] = True
 
     return assignment
+
+
+km = KnowledgeManager()
+km.handle_move([2, 3, 5, 6], [-1, 1, -1, 1])
+for w in km.model.worlds:
+    print(w.name, w.assignment)

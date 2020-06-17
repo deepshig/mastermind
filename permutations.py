@@ -4,7 +4,6 @@ import copy
 
 def __add_permutation(a, collection):
     permutation = copy.deepcopy(a)
-
     collection.append(permutation)
     return collection
 
