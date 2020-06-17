@@ -72,10 +72,3 @@ def get_assignment(code):
         assignment[key] = True
 
     return assignment
-
-
-km = KnowledgeManager()
-km.handle_move([2, 3, 5, 6], [1, 0, 0, -1])
-print(len(km.model.worlds))
-for w in km.model.worlds:
-    print(w.name, w.assignment)
