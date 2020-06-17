@@ -1,5 +1,4 @@
 import pytest
-import array as arr
 import sys
 sys.path.append('../')
 

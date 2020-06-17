@@ -1,10 +1,11 @@
+from relations import all_relations
 import github_com.erohkohl.mlsolver
 from github_com.erohkohl.mlsolver.kripke import World
 import pytest
 import sys
 sys.path.append('../')
 
-from kripke_model import get_corresponding_world, generate_worlds  # NOQA
+from kripke_model import get_corresponding_world, generate_worlds, get_relations  # NOQA
 
 
 def test_get_corresponding_world():
@@ -18,3 +19,9 @@ def test_get_corresponding_world():
 
     assert actual_world.name == expected_world.name
     assert actual_world.assignment == expected_world.assignment
+
+
+def test_get_relations():
+    worlds = generate_worlds()
+
+    assert get_relations(worlds) == all_relations
