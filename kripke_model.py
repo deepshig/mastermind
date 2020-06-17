@@ -36,14 +36,14 @@ def get_relations(worlds):
 
 
 def get_corresponding_world(order_of_colors, world_iterator):
-    proposition_map = {}
+    assignment = {}
     for i in range(0, LENGTH_OF_CODE):
         color = numbers_to_colors[order_of_colors[i]]
         key = str(i+1) + ":" + color
-        proposition_map[key] = True
+        assignment[key] = True
 
     world_name = "w" + str(world_iterator)
-    world = World(world_name, proposition_map)
+    world = World(world_name, assignment)
 
     return world
 
@@ -66,3 +66,10 @@ def generate_worlds():
             world_iterator = world_iterator + 1
 
     return worlds
+
+
+worlds = generate_worlds()
+relations = get_relations(worlds)
+
+ks = KripkeStructure(worlds, relations)
+print(ks)
