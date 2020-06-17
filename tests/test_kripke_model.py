@@ -1,4 +1,3 @@
-import github_com.erohkohl.mlsolver
 from github_com.erohkohl.mlsolver.kripke import World
 import pytest
 import sys

@@ -1,4 +1,3 @@
-import github_com.erohkohl.mlsolver
 from github_com.erohkohl.mlsolver.kripke import KripkeStructure, World
 from permutations import generate_all_combinations, generate_all_permutations
 from codemaker import LENGTH_OF_CODE
