@@ -48,9 +48,9 @@ def test_generate_all_permutations():
 
     """ when length of input array is more than 1 """
     input = [1, 2, 3]
-    expected_permutations = [[1, 2, 3], [1, 2, 3],
-                             [1, 2, 3], [1, 2, 3],
-                             [1, 2, 3], [1, 2, 3]]
+    expected_permutations = [[1, 2, 3], [2, 1, 3],
+                             [3, 1, 2], [1, 3, 2],
+                             [2, 3, 1], [3, 2, 1]]
 
     permutations = generate_all_permutations(input)
     assert permutations == expected_permutations

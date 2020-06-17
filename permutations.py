@@ -1,9 +1,18 @@
 from itertools import combinations
 
 
+def __add_permutation(a, collection):
+    permutation = []
+    for i in a:
+        permutation.append(i)
+
+    collection.append(permutation)
+    return collection
+
+
 def __heap_permutation(a, size, n, collection):
     if (size == 1):
-        collection.append(a)
+        collection = __add_permutation(a, collection)
         return
 
     for i in range(size):
