@@ -21,12 +21,6 @@ class StrategyAnalyser:
 
     def __init__(self, number_of_games):
         self.number_of_games = number_of_games
-        self.knowledge_manager = KnowledgeManager()
-
-        self.codemaker = CodeMaker()
-        self.mathematician_codebreaker = MathematicianCodeBreaker()
-        self.logician_codebreaker = LogicianCodeBreaker(self.knowledge_manager)
-        self.random_codebreaker = RandomCodeBreaker()
 
         self.mathematician_codebreaker_score = 0
         self.logician_codebreaker_score = 0
@@ -81,7 +75,17 @@ class StrategyAnalyser:
             self.random_codebreaker_score = self.random_codebreaker_score + 1
 
     def run_simulation(self):
-        for _ in range(0, self.number_of_games):
+        for i in range(0, self.number_of_games):
+            self.knowledge_manager = KnowledgeManager()
+            self.codemaker = CodeMaker()
+
+            print("Running Game : ", i+1, " : Code : ", self.codemaker.code)
+
+            self.mathematician_codebreaker = MathematicianCodeBreaker()
+            self.logician_codebreaker = LogicianCodeBreaker(
+                self.knowledge_manager)
+            self.random_codebreaker = RandomCodeBreaker()
+
             self.__play(self.mathematician_codebreaker)
             self.__play(self.logician_codebreaker)
             self.__play(self.random_codebreaker)
