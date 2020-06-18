@@ -1,15 +1,15 @@
-def print_code(code, knowledge, agent_knowledge):
+def print_code(game):
     print("++++++++++++++++++++++++")
-    print("CODE : ", *code, sep=" ")
-    print_knowledge(knowledge, agent_knowledge, False)
+    print("CODE : ", *game.codemaker.code, sep=" ")
+    print_knowledge(game, False)
     print("++++++++++++++++++++++++")
 
 
-def print_game_state(i, move, feedback, knowledge, agent_knowledge):
+def print_game_state(i, move, feedback, game):
     print("++++++++++++++++++++++++")
     print("Move :", i, ": ", *move, sep=" ")
     print("Feedback : ", *feedback, sep=" ")
-    print_knowledge(knowledge, agent_knowledge)
+    print_knowledge(game)
     print("++++++++++++++++++++++++")
 
 
@@ -19,25 +19,26 @@ def print_winner(winner):
     print("++++++++++++++++++++++++")
 
 
-def print_knowledge(knowledge, agent_knowledge, print_worlds=True):
-    print("Total worlds : ", len(knowledge.model.worlds))
+def print_knowledge(game, print_worlds=True):
+    print("Total worlds possible after this move : ",
+          len(game.knowledge_manager.model.worlds))
     print()
 
     if print_worlds:
-        for w in knowledge.model.worlds:
+        for w in game.knowledge_manager.model.worlds:
             print(w.name, w.assignment)
 
     print()
-    print("Real World : ", knowledge.real_world)
+    print("Real World : ", game.knowledge_manager.real_world)
     print("Number of Relations for Agent 1 : ",
-          len(knowledge.model.relations['1']))
+          len(game.knowledge_manager.model.relations['1']))
     print("Number of Relations for Agent 2 : ",
-          len(knowledge.model.relations['2']))
+          len(game.knowledge_manager.model.relations['2']))
     print()
 
-    print("Code Maker Knowledge : ", agent_knowledge.agent1)
-    print("Code Breaker Knowledge : ", agent_knowledge.agent2)
-    print("Common Knowledge : ", agent_knowledge.common_knowledge)
+    print("Code Maker Knowledge : ", game.agent_knowledge.agent1)
+    print("Code Breaker Knowledge : ", game.agent_knowledge.agent2)
+    print("Common Knowledge : ", game.agent_knowledge.common_knowledge)
 
 
 def print_simulation_results(strategy_analyser):

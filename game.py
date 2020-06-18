@@ -39,7 +39,7 @@ class Game:
             feedback = self.codemaker.analyze_move(next_move)
             self.__update_knwoledge(next_move, feedback)
             print_game_state(i, next_move, feedback,
-                             self.knowledge_manager, self.agent_knowledge)
+                             self)
 
             if self.__codebreaker_won(feedback):
                 return
@@ -53,7 +53,7 @@ class Game:
 
         self.__update_knwoledge(first_move, feedback)
         print_game_state(1, first_move, feedback,
-                         self.knowledge_manager, self.agent_knowledge)
+                         self)
 
         return feedback
 
@@ -73,8 +73,7 @@ class Game:
 
 def main():
     game = Game()
-    print_code(game.codemaker.code, game.knowledge_manager,
-               game.agent_knowledge)
+    print_code(game)
 
     game.play()
     print_winner(game.winner)
