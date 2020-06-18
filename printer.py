@@ -32,3 +32,16 @@ def print_knowledge(knowledge):
           len(knowledge.model.relations['1']))
     print("Number of Relations for Agent 2 : ",
           len(knowledge.model.relations['2']))
+
+
+def print_simulation_results(strategy_analyser):
+    print("++++++++++++++++++++++++")
+    print("Total games run for each strategy : ",
+          strategy_analyser.number_of_games)
+    print("Games won by Mathematician Code Breaker : ",
+          strategy_analyser.mathematician_codebreaker_score)
+    print("Games won by Logician Code Breaker : ",
+          strategy_analyser.logician_codebreaker_score)
+    print("Games won by Random Code Breaker : ",
+          strategy_analyser.random_codebreaker_score)
+    print("++++++++++++++++++++++++")
