@@ -35,8 +35,7 @@ class StrategyAnalyser:
     def __play(self, codebreaker):
         feedback = self.__handle_first_move(codebreaker)
 
-        if codebreaker_won(feedback):
-            self.__update_score(codebreaker)
+        if self.__codebreaker_won(feedback, codebreaker):
             return
 
         for i in range(2, NUMBER_OF_CHANCES+1):
@@ -45,8 +44,7 @@ class StrategyAnalyser:
 
             self.__update_knwoledge(next_move, feedback)
 
-            if codebreaker_won(feedback):
-                self.__update_score(codebreaker)
+            if self.__codebreaker_won(feedback, codebreaker):
                 return
 
         return
@@ -61,6 +59,14 @@ class StrategyAnalyser:
     def __update_knwoledge(self, move, feedback):
         self.knowledge_manager.handle_move(move, feedback)
         return
+
+    def __codebreaker_won(self, feedback, codebreaker):
+        for val in feedback:
+            if val == 0 or val == -1:
+                return False
+
+        self.__update_score(codebreaker)
+        return True
 
     def __update_score(self, codebreaker):
         if (isinstance(codebreaker, MathematicianCodeBreaker)):
@@ -80,14 +86,6 @@ class StrategyAnalyser:
             self.__play(self.logician_codebreaker)
             self.__play(self.random_codebreaker)
         return
-
-
-def codebreaker_won(feedback):
-    for val in feedback:
-        if val == 0 or val == -1:
-            return False
-
-    return True
 
 
 def main():

@@ -27,8 +27,7 @@ class Game:
 
     def play(self):
         feedback = self.__handle_first_move()
-        if codebreaker_won(feedback):
-            self.winner = CODE_BREAKER
+        if self.__codebreaker_won(feedback):
             return
 
         for i in range(2, NUMBER_OF_CHANCES+1):
@@ -37,8 +36,7 @@ class Game:
             self.__update_knwoledge(next_move, feedback)
             print_game_state(i, next_move, feedback, self.knowledge_manager)
 
-            if codebreaker_won(feedback):
-                self.winner = CODE_BREAKER
+            if self.__codebreaker_won(feedback):
                 return
 
         self.winner = CODE_MAKER
@@ -57,13 +55,13 @@ class Game:
         self.knowledge_manager.handle_move(move, feedback)
         return
 
+    def __codebreaker_won(self, feedback):
+        for val in feedback:
+            if val == 0 or val == -1:
+                return False
 
-def codebreaker_won(feedback):
-    for val in feedback:
-        if val == 0 or val == -1:
-            return False
-
-    return True
+        self.winner = CODE_BREAKER
+        return True
 
 
 def main():

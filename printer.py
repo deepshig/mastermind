@@ -38,6 +38,8 @@ def print_simulation_results(strategy_analyser):
     print("++++++++++++++++++++++++")
     print("Total games run for each strategy : ",
           strategy_analyser.number_of_games)
+    print()
+
     print("Games won by Mathematician Code Breaker : ",
           strategy_analyser.mathematician_codebreaker_score)
     print("Games won by Logician Code Breaker : ",
