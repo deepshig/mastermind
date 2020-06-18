@@ -21,6 +21,7 @@ def print_winner(winner):
 
 def print_knowledge(knowledge):
     print("Total worlds : ", len(knowledge.model.worlds))
+    print()
 
     for w in knowledge.model.worlds:
         print(w.name, w.assignment)

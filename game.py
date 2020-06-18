@@ -1,5 +1,5 @@
 from codemaker import CodeMaker
-from codebreaker import CodeBreaker
+from mathematician_codebreaker import MathematicianCodeBreaker
 from knowledge_manager import KnowledgeManager
 from printer import print_game_state, print_code, print_winner
 
@@ -20,7 +20,7 @@ class Game:
 
     def __init__(self):
         self.codemaker = CodeMaker()
-        self.codebreaker = CodeBreaker()
+        self.codebreaker = MathematicianCodeBreaker()
 
         self.knowledge_manager = KnowledgeManager()
         self.knowledge_manager.get_real_world(self.codemaker.code)

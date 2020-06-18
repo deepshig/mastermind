@@ -3,12 +3,12 @@ import array as arr
 import sys
 sys.path.append('../')
 
-from codebreaker import CodeBreaker  # NOQA
+from mathematician_codebreaker import MathematicianCodeBreaker  # NOQA
 
 
 @pytest.fixture
 def codebreaker_player():
-    return CodeBreaker()
+    return MathematicianCodeBreaker()
 
 
 def test_get_first_move(codebreaker_player):

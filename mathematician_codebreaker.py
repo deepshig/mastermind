@@ -4,7 +4,7 @@ import time
 from codemaker import LENGTH_OF_CODE
 
 
-class CodeBreaker:
+class MathematicianCodeBreaker:
     """
     CodeBreaker generates the moves to guess the code designed by CodeMaker.
     There are no repetitions allowed in the move.
