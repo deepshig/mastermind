@@ -94,8 +94,10 @@ def test_update_move_knowledge():
     input_feedback = [0, 0, 0, 0]
     expected_common_knowledge = ["~(1:red)", "~(2:green)",
                                  "~(3:violet)", "~(4:blue)"]
-    expected_agent2_knowledge = ["*(2:red)", "*(3:red)", "*(4:red)", "*(1:green)", "*(3:green)",
-                                 "*(4:green)", "*(1:violet)", "*(2:violet)", "*(4:violet)", "*(1:blue)", "*(2:blue)", "*(3:blue)"]
+    expected_agent2_knowledge = ["*(2:red)", "*(3:red)", "*(4:red)",
+                                 "*(1:green)", "*(3:green)", "*(4:green)",
+                                 "*(1:violet)", "*(2:violet)", "*(4:violet)",
+                                 "*(1:blue)", "*(2:blue)", "*(3:blue)"]
 
     agent_knowledge = AgentKnowledge()
     agent_knowledge.update_move_knowledge(input_code, input_feedback)
