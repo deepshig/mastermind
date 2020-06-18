@@ -13,6 +13,11 @@ class LogicianCodeBreaker:
         self.move = world_to_move(world)
         return self.move
 
+    def get_next_move(self, feedback):
+        world = self.__generate_random_world()
+        self.move = world_to_move(world)
+        return self.move
+
     def __generate_random_world(self):
         random.seed(time.time_ns())
         world = random.choice(self.knowledge_model.model.worlds)
