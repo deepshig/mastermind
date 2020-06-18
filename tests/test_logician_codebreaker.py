@@ -6,7 +6,7 @@ sys.path.append('../')
 
 from logician_codebreaker import LogicianCodeBreaker  # NOQA
 from knowledge_manager import KnowledgeManager  # NOQA
-from kripke_model import get_world_key  # NOQA
+from kripke_model import get_proposition  # NOQA
 
 
 def test_get_first_move():
@@ -74,7 +74,7 @@ def __move_to_world_assignment(move):
     assignment = {}
 
     for i in range(0, len(move)):
-        key = get_world_key(i+1, move[i])
-        assignment[key] = True
+        proposition = get_proposition(i+1, move[i])
+        assignment[proposition] = True
 
     return assignment

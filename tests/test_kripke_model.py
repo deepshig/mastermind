@@ -3,7 +3,7 @@ import pytest
 import sys
 sys.path.append('../')
 
-from kripke_model import get_corresponding_world, generate_worlds, get_relations, get_index_and_color_number, get_world_key  # NOQA
+from kripke_model import get_corresponding_world, generate_worlds, get_relations, get_index_and_color_number, get_proposition  # NOQA
 from relations import expected_relations  # NOQA
 
 
@@ -33,39 +33,39 @@ def test_get_relations():
     assert agent2_relations == expected_relations['2']
 
 
-def test_get_world_key():
+def test_get_proposition():
     """ when color_number is valid """
     index = 3
     color_number = 4
-    expected_key = "3:green"
+    expected_proposition = "3:green"
 
-    key = get_world_key(index, color_number)
-    assert key == expected_key
+    proposition = get_proposition(index, color_number)
+    assert proposition == expected_proposition
 
     """ when color_number is invalid """
     index = 3
     color_number = 0
-    expected_key = ""
+    expected_proposition = ""
 
-    key = get_world_key(index, color_number)
-    assert key == expected_key
+    proposition = get_proposition(index, color_number)
+    assert proposition == expected_proposition
 
 
 def test_get_index_and_color_number():
-    """ when key is valid """
-    key = "3:pink"
+    """ when proposition is valid """
+    proposition = "3:pink"
     expected_index = 3
     expected_color_number = 5
 
-    index, color_number = get_index_and_color_number(key)
+    index, color_number = get_index_and_color_number(proposition)
     assert index == expected_index
     assert color_number == expected_color_number
 
     """ when color is not present in the list given """
-    key = "2:random_color"
+    proposition = "2:random_color"
     expected_index = 2
     expected_color_number = 0
 
-    index, color_number = get_index_and_color_number(key)
+    index, color_number = get_index_and_color_number(proposition)
     assert index == expected_index
     assert color_number == expected_color_number

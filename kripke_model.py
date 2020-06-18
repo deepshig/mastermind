@@ -47,8 +47,8 @@ def get_relations(worlds):
 def get_corresponding_world(order_of_colors, world_iterator):
     assignment = {}
     for i in range(0, LENGTH_OF_CODE):
-        key = get_world_key(i+1, order_of_colors[i])
-        assignment[key] = True
+        proposition = get_proposition(i+1, order_of_colors[i])
+        assignment[proposition] = True
 
     world_name = "w" + str(world_iterator)
     world = World(world_name, assignment)
@@ -76,17 +76,17 @@ def generate_worlds():
     return worlds
 
 
-def get_world_key(index, color_number):
-    key = ""
+def get_proposition(index, color_number):
+    proposition = ""
 
     if color_number in __numbers_to_colors:
-        key = str(index) + ":" + __numbers_to_colors[color_number]
+        proposition = str(index) + ":" + __numbers_to_colors[color_number]
 
-    return key
+    return proposition
 
 
-def get_index_and_color_number(key):
-    color_details = key.split(":")
+def get_index_and_color_number(proposition):
+    color_details = proposition.split(":")
 
     index = int(color_details[0])
 

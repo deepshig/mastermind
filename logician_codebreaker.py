@@ -36,8 +36,8 @@ class LogicianCodeBreaker:
 def world_to_move(world):
     move = [0, 0, 0, 0]
 
-    for key in world.assignment:
-        index, color = get_index_and_color_number(key)
+    for proposition in world.assignment:
+        index, color = get_index_and_color_number(proposition)
         move[index-1] = color
 
     return move
