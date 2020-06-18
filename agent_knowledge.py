@@ -93,6 +93,7 @@ class AgentKnowledge:
                 proposition = get_proposition(i, color_number)
                 may_be = generate_may_be_proposition(proposition)
                 self.agent2.append(may_be)
+        return
 
 
 def generate_negative_proposition(proposition):
