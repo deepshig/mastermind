@@ -5,6 +5,15 @@ from kripke_model import get_index_and_color_number
 
 
 class LogicianCodeBreaker:
+    """
+    Logician CodeBreaker generates the moves to guess
+    the code designed by CodeMaker. There are no repetitions allowed
+    in the move.
+    All the decisions are based on analysing the current knowledge model
+    logically. Every move is generated as a random world selection from
+    the currently available worlds in the knowledge model.
+    """
+
     def __init__(self, knowledge_model):
         self.knowledge_model = knowledge_model
 

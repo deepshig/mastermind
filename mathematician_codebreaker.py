@@ -6,10 +6,14 @@ from random_codebreaker import generate_random_move
 
 class MathematicianCodeBreaker:
     """
-    CodeBreaker generates the moves to guess the code designed by CodeMaker.
-    There are no repetitions allowed in the move.
-    It also analyses the feedback on each move given by the CodeMaker,
-    and maintains its own knowledge to generate the next move.
+    Mathematician CodeBreaker generates the moves to guess
+    the code designed by CodeMaker. There are no repetitions allowed
+    in the move.
+    It analyses the feedback on each move given by the CodeMaker, and
+    maintains its own knowledge to generate the next move. All the
+    decisions are based on analysing the feedback mathematically,
+    without taking into regard the knowledge model being maintained
+    in the game.
     """
 
     def get_first_move(self):
