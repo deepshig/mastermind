@@ -11,6 +11,15 @@ This project is an analysis in terms of multi agent systems. It identifies the c
 * [import_from_github](https://github.com/nvbn/import_from_github_com)
 * [ML Solver](https://github.com/erohkohl/mlsolver)
 
+## Strategies
+
+The project analyses 3 different strategies for code-breaker.
+* Mathematician
+* Logician
+* Random
+
+More details about them can be found in the [documentation](documentation.md)
+
 ## Assumptions
 
 * A code is built up of 4 colors
@@ -20,8 +29,11 @@ This project is an analysis in terms of multi agent systems. It identifies the c
    * If element value = 1 : It means the color and position both are correctly guessed for the element at this position.
    * If element value = 0 : It means an element of this color is present somewhere in the code, but not at this position.
    * If element value = -1 : It means there is no element of this color in the code.
+* Default game runs with `Mathematician Code-breaker` strategy.
+* Strategy Analyser simulation runs 20 games for each strategy, with the same code in a game across the 3 strategies.
 
 ## Running the program
 
 * To run the code : `python game.py`
+* To run strategy analyser : `python strategy_analyser.py`
 * To run the tests : `cd tests && py.test && cd ../`
