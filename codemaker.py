@@ -1,4 +1,3 @@
-import array as arr
 import random
 import time
 
@@ -16,8 +15,8 @@ class CodeMaker:
         self.__generate_code()
 
     def __generate_code(self):
-        self.code = arr.array('i')
-        available_choices = arr.array('i', [1, 2, 3, 4, 5, 6])
+        self.code = []
+        available_choices = [1, 2, 3, 4, 5, 6]
 
         random.seed(time.time_ns())
         for _ in range(0, LENGTH_OF_CODE):
@@ -32,7 +31,7 @@ class CodeMaker:
         Feedback = 0, if element in the move occurs in the code, but not at index i
         Feedback = -1, if element in the move does not occur in the code at all
         """
-        feedback = arr.array('i', [-1, -1, -1, -1])
+        feedback = [-1, -1, -1, -1]
 
         for i in range(0, LENGTH_OF_CODE):
             if self.code[i] == move[i]:

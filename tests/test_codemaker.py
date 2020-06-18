@@ -1,5 +1,4 @@
 import pytest
-import array as arr
 import sys
 sys.path.append('../')
 
@@ -17,7 +16,7 @@ def test_code_generation(codemaker_player):
     2. Test if all the elements of the code belong to the given set
     3. Test if all the elements appear only once within the code
     """
-    available_elements = arr.array('i', [1, 2, 3, 4, 5, 6])
+    available_elements = [1, 2, 3, 4, 5, 6]
     code = codemaker_player.code
 
     assert len(code) == 4
@@ -27,11 +26,11 @@ def test_code_generation(codemaker_player):
 
 
 def test_analyze_move(codemaker_player):
-    codemaker_player.code = arr.array('i', [1, 2, 3, 4])
+    codemaker_player.code = [1, 2, 3, 4]
 
     """ When the color and positions of all elements match """
-    all_matching_move = arr.array('i', [1, 2, 3, 4])
-    expected_feedback = arr.array('i', [1, 1, 1, 1])
+    all_matching_move = [1, 2, 3, 4]
+    expected_feedback = [1, 1, 1, 1]
     assert codemaker_player.analyze_move(
         all_matching_move) == expected_feedback
 
@@ -39,8 +38,8 @@ def test_analyze_move(codemaker_player):
     When only color matches for two elements,
     but their position do not match
     """
-    move_with_only_matching_color = arr.array('i', [3, 2, 1, 4])
-    expected_feedback = arr.array('i', [0, 1, 0, 1])
+    move_with_only_matching_color = [3, 2, 1, 4]
+    expected_feedback = [0, 1, 0, 1]
     assert codemaker_player.analyze_move(
         move_with_only_matching_color) == expected_feedback
 
@@ -48,7 +47,7 @@ def test_analyze_move(codemaker_player):
     When there is an element whose color and
     position, both do not match
     """
-    move_with_wrong_color = arr.array('i', [3, 2, 1, 6])
-    expected_feedback = arr.array('i', [0, 1, 0, -1])
+    move_with_wrong_color = [3, 2, 1, 6]
+    expected_feedback = [0, 1, 0, -1]
     assert codemaker_player.analyze_move(
         move_with_wrong_color) == expected_feedback

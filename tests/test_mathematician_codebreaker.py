@@ -1,5 +1,4 @@
 import pytest
-import array as arr
 import sys
 sys.path.append('../')
 
@@ -17,7 +16,7 @@ def test_get_first_move(codebreaker_player):
     2. Test if all the elements of the move belong to the given set
     3. Test if all the elements appear only once within the move
     """
-    available_elements = arr.array('i', [1, 2, 3, 4, 5, 6])
+    available_elements = [1, 2, 3, 4, 5, 6]
     first_move = codebreaker_player.get_first_move()
 
     assert len(first_move) == 4
@@ -31,8 +30,8 @@ def test_get_next_move(codebreaker_player):
     When last move was perfect, i.e.,
     when all elements have feedback value 1
     """
-    perfect_move_feedback = arr.array('i', [1, 1, 1, 1])
-    last_move = arr.array('i', [1, 2, 3, 4])
+    perfect_move_feedback = [1, 1, 1, 1]
+    last_move = [1, 2, 3, 4]
     codebreaker_player.move = last_move
 
     new_move = codebreaker_player.get_next_move(perfect_move_feedback)
@@ -44,8 +43,8 @@ def test_get_next_move(codebreaker_player):
     but not matching positions, i.e.,
     feedback has value 0 for some elements
     """
-    feedback = arr.array('i', [1, 0, 0, 0])
-    last_move = arr.array('i', [1, 4, 2, 3])
+    feedback = [1, 0, 0, 0]
+    last_move = [1, 4, 2, 3]
     codebreaker_player.move = last_move
 
     new_move = codebreaker_player.get_next_move(feedback)
@@ -57,8 +56,8 @@ def test_get_next_move(codebreaker_player):
     When some elements are totally wrong in the last move
     i.e., feedback has value -1 for some elements
     """
-    feedback = arr.array('i', [1, 0, -1, -1])
-    last_move = arr.array('i', [1, 4, 5, 6])
+    feedback = [1, 0, -1, -1]
+    last_move = [1, 4, 5, 6]
     codebreaker_player.move = last_move
 
     new_move = codebreaker_player.get_next_move(feedback)

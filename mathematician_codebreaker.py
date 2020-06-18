@@ -1,4 +1,3 @@
-import array as arr
 import random as rand
 import time
 from codemaker import LENGTH_OF_CODE
@@ -18,8 +17,7 @@ class MathematicianCodeBreaker:
         return self.move
 
     def get_next_move(self, feedback):
-        new_move = arr.array('i', [0, 0, 0, 0])
-        old_move = self.move
+        new_move = [0, 0, 0, 0]
 
         new_move = self.__handle_perfectly_correct_elements(new_move, feedback)
 
@@ -48,8 +46,8 @@ class MathematicianCodeBreaker:
         If random generation leads to same move again, handle it by
         swapping any two elements with feedback 0.
         """
-        empty_indices = arr.array('i')
-        values_to_handle = arr.array('i')
+        empty_indices = []
+        values_to_handle = []
 
         for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 0:
@@ -60,7 +58,7 @@ class MathematicianCodeBreaker:
         if len(values_to_handle) != 0 and len(empty_indices) != 0:
             rand.seed(time.time_ns())
 
-            available_indices = empty_indices.tolist()
+            available_indices = list(empty_indices)
             for val in values_to_handle:
                 random_index = rand.choice(available_indices)
                 new_move[random_index] = val
@@ -84,7 +82,7 @@ class MathematicianCodeBreaker:
         is not already present in the move. This is because duplication
         is not allowed
         """
-        values_to_substitute = arr.array('i')
+        values_to_substitute = []
         for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == -1:
                 values_to_substitute.append(self.move[i])
