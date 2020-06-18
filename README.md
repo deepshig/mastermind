@@ -14,7 +14,7 @@ This project is an analysis in terms of multi agent systems. It identifies the c
 ## Assumptions
 
 * A code is built up of 4 colors
-* Code breaker gets a total of 5 chances to guess the code
+* Code breaker gets a total of 3 chances to guess the code
 * Repetition of colors in the code is not allowed
 * For every move of code breaker, code maker provides feeback as an array of 4 elements, as follows :
    * If element value = 1 : It means the color and position both are correctly guessed for the element at this position.

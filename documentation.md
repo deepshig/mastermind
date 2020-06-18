@@ -14,7 +14,7 @@ Once code-maker decides over a secret code, code-breaker attempts to guess it. E
 * If element value = 0  : It means an element of this color is present somewhere in the code, but not at this position.
 * If element value = -1 : It means there is no element of this color in the code.
 
-Code-breaker uses this feedback on its previous move to generate the next move. If it is able to make a correct guess within 5 moves, it wins, otherwise the code-maker wins.
+Code-breaker uses this feedback on its previous move to generate the next move. If it is able to make a correct guess within 3 moves, it wins, otherwise the code-maker wins.
 
 ## Epistemic Logic Application
 

@@ -3,7 +3,7 @@ from codebreaker import CodeBreaker
 from knowledge_manager import KnowledgeManager
 from printer import print_game_state, print_code, print_winner
 
-NUMBER_OF_CHANCES = 5
+NUMBER_OF_CHANCES = 3
 CODE_MAKER = "Code Maker"
 CODE_BREAKER = "Code breaker"
 

@@ -21,6 +21,11 @@ def print_winner(winner):
 
 def print_knowledge(knowledge):
     print("Total worlds : ", len(knowledge.model.worlds))
+
+    for w in knowledge.model.worlds:
+        print(w.name, w.assignment)
+
+    print()
     print("Real World : ", knowledge.real_world)
     print("Number of Relations for Agent 1 : ",
           len(knowledge.model.relations['1']))

@@ -57,7 +57,7 @@ class KnowledgeManager:
     def __handle_incorrect_element(self, color_number):
         worlds = copy.deepcopy(self.model.worlds)
         for w in worlds:
-            for i in range(1, 5):
+            for i in range(1, LENGTH_OF_CODE+1):
                 assignment = get_world_key(i, color_number)
                 if assignment in w.assignment:
                     self.model.remove_node_by_name(w.name)
