@@ -18,7 +18,7 @@ The project analyses 3 different strategies for code-breaker.
 * Logician
 * Random
 
-More details about them can be found in the [documentation](documentation.md)
+More details about the project can be found in the [documentation](documentation.md)
 
 ## Assumptions
 
@@ -31,6 +31,19 @@ More details about them can be found in the [documentation](documentation.md)
    * If element value = -1 : It means there is no element of this color in the code.
 * Default game runs with `Mathematician Code-breaker` strategy.
 * Strategy Analyser simulation runs 20 games for each strategy, with the same code in a game across the 3 strategies.
+
+## Implementation
+
+We implemented the game in python.
+
+We create two classes, one each for code-maker and the code-breaker. Code-breaker class initialises by randomly generating a code. Code-breaker attempts to guess this code within 3 moves.
+
+We use a knowledge-manager class to represent the Kripke Model (possible worlds and their relations) according to the current state of the game. There is also an agent-knowledge class which maintains the commong knowledge and individual knowledge propositions for both agents at every state of the game.
+
+The game class taked the responsibility to bring all these features together, and conduct a game. In each move, code-breaker makes a guess, and code-maker provides feedback. The knowledge base in Kripke model and agent knowledge is updated accordingly. We have three strategies in place for code-breaker, however the game by default runs for mathematician code-breaker.
+
+Strategy analyser class provides an interface to run simulation games to compare the three strategies available.
+
 
 ## Running the program
 

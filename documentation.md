@@ -202,3 +202,15 @@ We run 20 game simulations.
 For every game, a new code is generated, and a new knowledge model is created. A code-breaker for each of the above stated three strategies is given a chance to play the game, and the winner is recorded.
 
 The score about the number of games won by each of the 3 code-breaker strategies is posted at the end of the simulation.
+
+## Project Implementation
+
+We implemented the game in python.
+
+We create two classes, one each for code-maker and the code-breaker. Code-breaker class initialises by randomly generating a code. Code-breaker attempts to guess this code within 3 moves.
+
+We use a knowledge-manager class to represent the Kripke Model (possible worlds and their relations) according to the current state of the game. There is also an agent-knowledge class which maintains the commong knowledge and individual knowledge propositions for both agents at every state of the game.
+
+The game class taked the responsibility to bring all these features together, and conduct a game. In each move, code-breaker makes a guess, and code-maker provides feedback. The knowledge base in Kripke model and agent knowledge is updated accordingly. We have three strategies in place for code-breaker, however the game by default runs for mathematician code-breaker.
+
+Strategy analyser class provides an interface to run simulation games to compare the three strategies available.
