@@ -160,7 +160,7 @@ For example, if the feedback obtained is `[0 1 0 -1]`,  for the following move :
 For the next move, code-breaker knows that :
 * Yellow is perfectly correct, and need not be changed.
 * Blue and green needs to be in a different position. Since both 1st, 3rd and 4th positions are free to be occupied, they can be placed in any of these randomly.
-* Pink needs to be replaced, and placed in any of the available empty positions. Any other color (green or violet) and its position from the available empty positions will be chosen randomly for the next move.
+* Pink needs to be replaced, and placed in any of the available empty positions. Any other color (red or violet) and its position from the available empty positions will be chosen randomly for the next move.
 
 However, since the learnings from older moves are not maintained,
 * Even if blue placed at position 3 is wrong and this was learnt in an older move, still there is a chance for it to be placed at position 3 again in the next move.
