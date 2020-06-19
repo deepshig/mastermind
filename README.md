@@ -10,6 +10,7 @@ This project is an analysis in terms of multi agent systems. It identifies the c
 * [Pytest 5.4.2](https://pypi.org/project/pytest/)
 * [import_from_github](https://github.com/nvbn/import_from_github_com)
 * [ML Solver](https://github.com/erohkohl/mlsolver)
+* [Termcolor 1.1.0](https://pypi.org/project/termcolor/)
 
 ## Strategies
 
@@ -50,6 +51,8 @@ The game class takes the responsibility to bring all these features together, an
 Strategy analyser class provides an interface to run simulation games to compare the three strategies available.
 
 We have written unit tests for most of the logic in the code. These ensure that no unintentional changes can take place in the code. Thus, it is recommended to run the tests everytime before starting off with the project.
+
+We are using `termcolor` to add colors to the terminal output, enhancing it's readability.
 
 ## Running the program
 

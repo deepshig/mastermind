@@ -1,27 +1,43 @@
+from termcolor import cprint
+
+
 def print_code(game):
     print("++++++++++++++++++++++++")
-    print("CODE : ", *game.codemaker.code, sep=" ")
+
+    text = "CODE : " + str(game.codemaker.code)
+    cprint(text, "green", attrs=['bold'])
+
     print_knowledge(game, False)
     print("++++++++++++++++++++++++")
 
 
 def print_game_state(i, move, feedback, game):
     print("++++++++++++++++++++++++")
-    print("Move :", i, ": ", *move, sep=" ")
-    print("Feedback : ", *feedback, sep=" ")
+
+    text = "Move : " + str(i) + " : " + str(move)
+    cprint(text, "green", attrs=['bold'])
+
+    text = "Feedback : " + str(feedback)
+    cprint(text, "green", attrs=['bold'])
     print_knowledge(game)
     print("++++++++++++++++++++++++")
 
 
 def print_winner(winner):
     print("++++++++++++++++++++++++")
-    print("WINNER : ",  winner)
+
+    text = "WINNER : " + winner
+    cprint(text, "green", attrs=['bold'])
+
     print("++++++++++++++++++++++++")
 
 
 def print_knowledge(game, print_worlds=True):
-    print("Total worlds possible after this move : ",
-          len(game.knowledge_manager.model.worlds))
+    print()
+
+    text = "Total worlds possible after this move : " + \
+        str(len(game.knowledge_manager.model.worlds))
+    cprint(text, "yellow", attrs=['bold'])
     print()
 
     if print_worlds:
@@ -36,9 +52,20 @@ def print_knowledge(game, print_worlds=True):
           len(game.knowledge_manager.model.relations['2']))
     print()
 
-    print("Code Maker Knowledge : ", game.agent_knowledge.agent1)
-    print("Code Breaker Knowledge : ", game.agent_knowledge.agent2)
-    print("Common Knowledge : ", game.agent_knowledge.common_knowledge)
+    text = "Code Maker Knowledge : "
+    cprint(text, "yellow", attrs=['bold'])
+    print(game.agent_knowledge.agent1)
+    print()
+
+    text = "Code Breaker Knowledge : "
+    cprint(text, "yellow", attrs=['bold'])
+    print(game.agent_knowledge.agent2)
+    print()
+
+    text = "Common Knowledge : "
+    cprint(text, "yellow", attrs=['bold'])
+    print(game.agent_knowledge.common_knowledge)
+    print()
 
 
 def print_simulation_results(strategy_analyser):
