@@ -214,3 +214,5 @@ We use a knowledge-manager class to represent the Kripke Model (possible worlds 
 The game class takes the responsibility to bring all these features together, and conduct a game. In each move, code-breaker makes a guess, and code-maker provides feedback. The knowledge base in Kripke model and agent knowledge is updated accordingly. We have three strategies in place for code-breaker, however the game by default runs for mathematician code-breaker.
 
 Strategy analyser class provides an interface to run simulation games to compare the three strategies available.
+
+We have written unit tests for most of the logic in the code. These ensure that no unintentional changes can take place in the code. Thus, it is recommended to run the tests everytime before starting off with the project.

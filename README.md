@@ -49,6 +49,7 @@ The game class takes the responsibility to bring all these features together, an
 
 Strategy analyser class provides an interface to run simulation games to compare the three strategies available.
 
+We have written unit tests for most of the logic in the code. These ensure that no unintentional changes can take place in the code. Thus, it is recommended to run the tests everytime before starting off with the project.
 
 ## Running the program
 
