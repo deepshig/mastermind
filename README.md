@@ -31,6 +31,11 @@ More details about the project can be found in the [documentation](documentation
    * If element value = -1 : It means there is no element of this color in the code.
 * Default game runs with `Mathematician Code-breaker` strategy.
 * Strategy Analyser simulation runs 20 games for each strategy, with the same code in a game across the 3 strategies.
+* Kripke Model about the state of the game is maintained in the KnowledgeManager.
+* Agent knowledge is modelled as follows :
+   * A knowledge proposition known with surety is expressed as `<position>:<color>`.
+   * A negation known with surety is expressed as `~(<position>:<color>)`.
+   * An unsure knowledge proposition which may or may not hold is expressed as `*(<position>:<color>)`.
 
 ## Implementation
 
