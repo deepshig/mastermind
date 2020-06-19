@@ -109,8 +109,8 @@ Using this logic, a game of Mastermind becomes a series of restrictions on the K
 We monitor the common knowledge, and individual knowledge accummulated by both the agents throughout the game.
 
 * A knowledge proposition known with surety is expressed as `<position>:<color>`.
-* A negation is expressed as `~(<position>:<color>)`.
-* An unsure knowledge proposition is expressed as `*(<position>:<color>)`.
+* A negation known with surety is expressed as `~(<position>:<color>)`.
+* An unsure knowledge proposition which may or may not hold is expressed as `*(<position>:<color>)`.
 
 Common Knowledge is collectively available to both agents, however `agent1` knowledge and `agent2` knowledge is only available to the respective agents indivdually. We have `agent1` as the code-maker, and `agent2` as the code-breaker.
 
@@ -159,12 +159,12 @@ For example, if the feedback obtained is `[0 1 0 -1]`,  for the following move :
 
 For the next move, code-breaker knows that :
 * Yellow is perfectly correct, and need not be changed.
-* Blue and green needsto be in a different position. Since both 1st, 3rd and 4th positions are free to be occupied, they can be placed in any of these randomly.
+* Blue and green needs to be in a different position. Since both 1st, 3rd and 4th positions are free to be occupied, they can be placed in any of these randomly.
 * Pink needs to be replaced, and placed in any of the available empty positions. Any other color (green or violet) and its position from the available empty positions will be chosen randomly for the next move.
 
-However, since the learnings from previous move are not maintained,
-* Even if blue placed at position 3 is wrong and this was learnt in last move, still there is a chance for it to be placed at position 3 again in the next move.
-* It is possible that color violet is randomly chosen to replace pink, even though it was already violet in one of the previous moves, and was replaced by pink in the last move, on receiving a feedbakc `-1` then.
+However, since the learnings from older moves are not maintained,
+* Even if blue placed at position 3 is wrong and this was learnt in an older move, still there is a chance for it to be placed at position 3 again in the next move.
+* It is possible that color violet is randomly chosen to replace pink, even though it was already violet in one of the previous moves, and was replaced by pink in the last move, on receiving a feedback `-1` then.
 
 Thus, this strategy is not entirely efficient.
 
@@ -172,18 +172,18 @@ Thus, this strategy is not entirely efficient.
 
 Here, code-breaker makes use of the knowledge model maintained in the game to make a decision about the next move. As we see in the `Game` class, knowledge model is updated after every move.
 
-Every move, along with the feedback generated for it is analysed, and the Kripke Model is solved for it. The feedback acts as public announements, and thus the worlds which do not satisfy them are eliminated.
+Every move, along with the feedback generated for it, is analysed, and the Kripke Model is solved for it. The feedback acts as public announement, and thus the worlds which do not satisfy it are eliminated.
 
 For example, if the feedback obtained is `[0 1 0 -1]`,  for the following move :
 
 <img src="resources/guess_2.jpg" width="140">
 
 In the available Kripke model :
-* Worlds where 2nd color is not yellow wll be eliminated.
+* Worlds where second color is not yellow wll be eliminated.
 * Worlds where first color is blue, or third color is green will be eliminated.
 * Worlds where pink is present in any of the positions will be eliminated.
 
-Such an elimination is carried out after every move. Thus the number of worlds in the model reduce after every move. In this strategy, for the next move, code-breaker randomly chooses a world from the available worlds after the analysis of the previous move.
+Such an elimination is carried out after every move. Thus the number of worlds in the model reduce after every move. In this strategy, for the next move, code-breaker randomly chooses a world from the worlds available after the analysis of the previous move.
 
 Thus, this strategy is the most efficient one, because information is never lost here. Learnings made in every move are carried over, and every decision is made based on the all the previous learnings in the game.
 
