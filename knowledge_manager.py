@@ -10,7 +10,6 @@ class KnowledgeManager:
     Initialises with a Kripke Model for the game.
     Keeps track of the real world, according to the secret code.
     Processes every move to update the knowledge structure accrodingly.
-    Maintains the common knowledge, and knowledge per agent basis.
     """
 
     def __init__(self):

@@ -2,6 +2,13 @@ from kripke_model import get_proposition
 
 
 class AgentKnowledge:
+    """
+    Monitors and maintains the agent knowledge for the game.
+    Processes the secret code to update the agent1 knowledge.
+    Processes every move to update the common knowledge
+    and deduced knowledge for agent2 accrodingly.
+    """
+
     def __init__(self):
         self.agent1 = []
         self.agent2 = []
