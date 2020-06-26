@@ -31,7 +31,7 @@ Code-maker needs to chose a secret code of length 4, with no duplicates. Suppose
 Talking in terms of Kripke Model, we can say that :
 * Real world is the same as the secret code.
 * Code-maker considers only the real world to be possible, because it knows the actual code.
-* Code-breker considers all the possible worlds in the beginning of the game. Therefore, with no repetitions, there are 120 worlds possible for the code-breaker.
+* Code-breaker considers all the possible worlds in the beginning of the game. Therefore, with no repetitions, there are 360 worlds possible for the code-breaker.
 
 Using the knowledge operator <b>K</b>, we can assert the following :
 * Code-maker can access only the real world.
@@ -69,7 +69,7 @@ Given the above relations and model, we can summarise that :
 
 ### Higher Order Knowledge
 
-Now, when the game proceeds, code-breaker makes guesses and code-maker provides feedback by analysing them with respect tot he secret code.
+Now, when the game proceeds, code-breaker makes guesses and code-maker provides feedback by analysing them with respect to the secret code.
 
 Accounting this in terms of public announcement logic, the feedback is a truthful public announcement. It allows code-breaker to narrow down the possible worlds and make a viable next guess.
 
@@ -179,7 +179,7 @@ For example, if the feedback obtained is `[0 1 0 -1]`,  for the following move :
 <img src="resources/guess_2.jpg" width="140">
 
 In the available Kripke model :
-* Worlds where second color is not yellow wll be eliminated.
+* Worlds where second color is not yellow will be eliminated.
 * Worlds where first color is blue, or third color is green will be eliminated.
 * Worlds where pink is present in any of the positions will be eliminated.
 
