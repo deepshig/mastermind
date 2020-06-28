@@ -17,15 +17,22 @@ class MathematicianCodeBreaker:
     """
 
     def get_first_move(self):
+        """
+        Generates the first move randomly
+        """
         self.move = generate_random_move()
         return self.move
 
     def get_next_move(self, feedback):
+        """
+        Generates the next move, by analysing the feedback
+        for the previous move.
+        """
         new_move = [0, 0, 0, 0]
 
         new_move = self.__handle_perfectly_correct_elements(new_move, feedback)
 
-        new_move = self.__handle_correct_color_incorrect_position_elements(
+        new_move = self.__handle_wrongly_positioned_elements(
             new_move, feedback)
 
         new_move = self.__handle_incorrect_elements(new_move, feedback)
@@ -41,7 +48,7 @@ class MathematicianCodeBreaker:
 
         return new_move
 
-    def __handle_correct_color_incorrect_position_elements(self, new_move, feedback):
+    def __handle_wrongly_positioned_elements(self, new_move, feedback):
         """
         Elements with feedback 0 mean that they appear at some other
         location in the code. Therefore, shuffle the indices of all the

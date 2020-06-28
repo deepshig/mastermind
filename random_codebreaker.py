@@ -23,6 +23,9 @@ class RandomCodeBreaker:
 
 
 def generate_random_move():
+    """
+    Generates a random move
+    """
     move = []
     available_choices = [1, 2, 3, 4, 5, 6]
 

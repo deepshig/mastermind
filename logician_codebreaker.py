@@ -28,12 +28,20 @@ class LogicianCodeBreaker:
         return self.move
 
     def __generate_random_world(self):
+        """
+        Generates a random world from the
+        available knowledge model.
+        """
         random.seed(time.time_ns())
         world = random.choice(self.knowledge_model.model.worlds)
         return world
 
 
 def world_to_move(world):
+    """
+    For the given world, generates the move
+    using its propositional assignment
+    """
     move = [0, 0, 0, 0]
 
     for proposition in world.assignment:

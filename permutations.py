@@ -22,6 +22,11 @@ def __heap_permutation(a, size, n, collection):
 
 
 def generate_all_permutations(a):
+    """
+    Generate all possible combinations of a list
+    of a numbers, using all of them, with no
+    repetitions.
+    """
     n = len(a)
     collection = []
     __heap_permutation(a, n, n, collection)
@@ -29,6 +34,10 @@ def generate_all_permutations(a):
 
 
 def generate_all_combinations(a, n):
+    """
+    Generate all possible combinations of length n
+    from a list of a numbers
+    """
     if n > len(a):
         return []
 

@@ -30,6 +30,13 @@ class Game:
         self.agent_knowledge.update_code_maker_knowledge(self.codemaker.code)
 
     def play(self):
+        """
+        Provides interface to conduct the game.
+        Provides opportunities to the code-breaker to
+        make moves, passes them to code-maker, gets the feedback
+        and passes it to the code-breaker, to get the next move.
+        Also, keeps track of the winner for the game.
+        """
         feedback = self.__handle_first_move()
         if self.__codebreaker_won(feedback):
             return
@@ -48,6 +55,11 @@ class Game:
         return
 
     def __handle_first_move(self):
+        """
+        Handles the first move for the game.
+        Gets the move from code-breaker, passes it
+        onto the code-maker, and gets feedback from it.
+        """
         first_move = self.codebreaker.get_first_move()
         feedback = self.codemaker.analyze_move(first_move)
 
@@ -58,11 +70,20 @@ class Game:
         return feedback
 
     def __update_knwoledge(self, move, feedback):
+        """
+        Updates the knowledge model and the agent knowledge
+        of the game, with the knowledge acquired from this
+        move and its feedback.
+        """
         self.knowledge_manager.handle_move(move, feedback)
         self.agent_knowledge.update_move_knowledge(move, feedback)
         return
 
     def __codebreaker_won(self, feedback):
+        """
+        Checks if the codebreaker has correctly
+        guessed the secret code, and won the game.
+        """
         for val in feedback:
             if val == 0 or val == -1:
                 return False

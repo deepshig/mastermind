@@ -7,14 +7,18 @@ LENGTH_OF_CODE = 4
 class CodeMaker:
     """
     CodeMaker generates the code for each game.
-    There are no repetitions allowed in the code, and the move.
-    It also gives a feedback on each move of the CodeBreaker, and maintains its own knowledge
+    There are no repetitions allowed in the code, and
+    the move. It also gives a feedback on each move of
+    the CodeBreaker, and maintains its own knowledge
     """
 
     def __init__(self):
         self.__generate_code()
 
     def __generate_code(self):
+        """
+        Generates the secret code randomly
+        """
         self.code = []
         available_choices = [1, 2, 3, 4, 5, 6]
 

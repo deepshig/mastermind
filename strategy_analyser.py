@@ -6,6 +6,8 @@ from knowledge_manager import KnowledgeManager
 from game import NUMBER_OF_CHANCES
 from printer import print_simulation_results
 
+NUMBER_OF_SIMULATIONS = 20
+
 
 class StrategyAnalyser:
     """
@@ -27,6 +29,14 @@ class StrategyAnalyser:
         self.random_codebreaker_score = 0
 
     def __play(self, codebreaker):
+        """
+        Provides interface to conduct the game.
+        Provides opportunities to the code-breaker to
+        make moves, passes them to code-maker, gets the feedback
+        and passes it to the code-breaker, to get the next move.
+        Also, keeps track of the winner for the game, and updates
+        the scores accordingly.
+        """
         feedback = self.__handle_first_move(codebreaker)
 
         if self.__codebreaker_won(feedback, codebreaker):
@@ -36,7 +46,7 @@ class StrategyAnalyser:
             next_move = codebreaker.get_next_move(feedback)
             feedback = self.codemaker.analyze_move(next_move)
 
-            self.__update_knwoledge(next_move, feedback)
+            self.__update_knowledge(next_move, feedback)
 
             if self.__codebreaker_won(feedback, codebreaker):
                 return
@@ -44,17 +54,31 @@ class StrategyAnalyser:
         return
 
     def __handle_first_move(self, codebreaker):
+        """
+        Handles the first move for the game.
+        Gets the move from code-breaker, passes it
+        onto the code-maker, and gets feedback from it.
+        """
         first_move = codebreaker.get_first_move()
         feedback = self.codemaker.analyze_move(first_move)
 
-        self.__update_knwoledge(first_move, feedback)
+        self.__update_knowledge(first_move, feedback)
         return feedback
 
-    def __update_knwoledge(self, move, feedback):
+    def __update_knowledge(self, move, feedback):
+        """
+        Updates the knowledge model of the game, with
+        the knowledge acquired from this move and its feedback.
+        """
         self.knowledge_manager.handle_move(move, feedback)
         return
 
     def __codebreaker_won(self, feedback, codebreaker):
+        """
+        Checks if the codebreaker has correctly
+        guessed the secret code, and won the game.
+        If yes, updates the score accordingly.
+        """
         for val in feedback:
             if val == 0 or val == -1:
                 return False
@@ -63,6 +87,10 @@ class StrategyAnalyser:
         return True
 
     def __update_score(self, codebreaker):
+        """
+        Checks the type of the code-breaker
+        and updates the score by 1 accordingly.
+        """
         if (isinstance(codebreaker, MathematicianCodeBreaker)):
             self.mathematician_codebreaker_score = self.mathematician_codebreaker_score + 1
             return
@@ -75,6 +103,12 @@ class StrategyAnalyser:
             self.random_codebreaker_score = self.random_codebreaker_score + 1
 
     def run_simulation(self):
+        """
+        Runs the strategy analyser simulation.
+        Allows 'n' games to be played, with new instances
+        of all the players and the knowledge model
+        for each game.
+        """
         for i in range(0, self.number_of_games):
             self.knowledge_manager = KnowledgeManager()
             self.codemaker = CodeMaker()
@@ -93,7 +127,7 @@ class StrategyAnalyser:
 
 
 def main():
-    analyser = StrategyAnalyser(20)
+    analyser = StrategyAnalyser(NUMBER_OF_SIMULATIONS)
     analyser.run_simulation()
     print_simulation_results(analyser)
 

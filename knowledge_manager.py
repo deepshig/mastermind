@@ -18,6 +18,10 @@ class KnowledgeManager:
         self.model = KripkeStructure(worlds, relations)
 
     def get_real_world(self, code):
+        """
+        Initialises the real world in the Kripke Model
+        from the secret code generated for the game.
+        """
         real_world_assignment = get_assignment(code)
         for world in self.model.worlds:
             if world.assignment == real_world_assignment:
@@ -25,6 +29,11 @@ class KnowledgeManager:
                 return
 
     def handle_move(self, move, feedback):
+        """
+        Handles each move and its feedback as a public
+        announcement, and restricts the available model
+        accordingly.
+        """
         for i in range(0, LENGTH_OF_CODE):
             if feedback[i] == 1:
                 assignment = get_proposition(i+1, move[i])
@@ -32,7 +41,7 @@ class KnowledgeManager:
 
             if feedback[i] == 0:
                 assignment = get_proposition(i+1, move[i])
-                self.__handle_correct_color_incorrect_position_element(
+                self.__handle_wrongly_positioned_element(
                     assignment)
 
             if feedback[i] == -1:
@@ -40,13 +49,23 @@ class KnowledgeManager:
         return
 
     def __handle_perfectly_correct_element(self, assignment):
+        """
+        For correctly guessed color, remove the worlds
+        which have some other color at this position
+        and derive the reduced model.
+        """
         worlds = copy.deepcopy(self.model.worlds)
         for w in worlds:
             if not (assignment in w.assignment):
                 self.model.remove_node_by_name(w.name)
         return
 
-    def __handle_correct_color_incorrect_position_element(self, assignment):
+    def __handle_wrongly_positioned_element(self, assignment):
+        """
+        For wrongly positioned color, remove the worlds
+        which have this color at this position
+        and derive the reduced model.
+        """
         worlds = copy.deepcopy(self.model.worlds)
         for w in worlds:
             if assignment in w.assignment:
@@ -54,6 +73,11 @@ class KnowledgeManager:
         return
 
     def __handle_incorrect_element(self, color_number):
+        """
+        For incorrectly guessed color, remove the worlds
+        which have this color at any position
+        and derive the reduced model.
+        """
         worlds = copy.deepcopy(self.model.worlds)
         for w in worlds:
             for i in range(1, LENGTH_OF_CODE+1):
@@ -64,6 +88,10 @@ class KnowledgeManager:
 
 
 def get_assignment(code):
+    """
+    Get world assignment from the code
+    [1 2 3 4] -> {'1:yellow', '2:violet', '3:red', '4:green'}
+    """
     assignment = {}
 
     for i in range(0, LENGTH_OF_CODE):
