@@ -102,7 +102,7 @@ Thus, after these announcements, the Kripke Model gets restricted as follows :
 
 Both the agents are aware of this elimination process, and it becomes common knowledge in the system. Based on the derived system, Player 2 can now make a second guess. Player 1 would again analyse it and provide feedback. Similar procedure would be followed and the game continues.
 
-Using this logic, a game of Mastermind becomes a series of restrictions on the Kripke model until Player 2 has access to only one world and thereby knows the secret code. However, this restriction process is lmiited to only 5 moves. If Player 2 still is unable to make the correct guess, Player 1 wins.
+Using this logic, a game of Mastermind becomes a series of restrictions on the Kripke model until Player 2 has access to only one world and thereby knows the secret code. However, this restriction process is limited to only 3 moves. If Player 2 still is unable to make the correct guess, Player 1 wins.
 
 ### Agent Knowledge
 
