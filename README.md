@@ -19,7 +19,7 @@ The project analyses 3 different strategies for code-breaker.
 * Logician
 * Random
 
-More details about the project can be found in the [documentation](documentation.md)
+More details about the project can be found in the [documentation](docs/documentation.md)
 
 ## Assumptions
 
